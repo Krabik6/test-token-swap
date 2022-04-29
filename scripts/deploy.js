@@ -16,8 +16,8 @@ async function main() {
   const nt = await NT.deploy()
   await nt.deployed()
   console.log("contract address: " + erc.address)
-  console.log("USDT address: " + await erc.USDT())
-  console.log("NewToken address: " +await erc.NT())
+  console.log("USDT address: " + await erc.USDT()) //я хзчто еото
+  console.log("NewToken address: " +await erc.NT()) //я хзчто еото
   console.log("-------------------------------")
   console.log("Erc deployed to: " + erc.address)
   console.log("USDT deployed to: " + usdt.address)
