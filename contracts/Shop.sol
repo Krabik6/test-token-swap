@@ -25,33 +25,21 @@ contract Shop {
 
     
     // }
-    function contractNTaddr()  view public returns(uint){
+    function NTbalanceOfContract()  view public returns(uint){
         return NT.balanceOf(contractAddr);
     }
 
-    function contractUSDTaddr() view public returns(uint){
+    function USDTbalanceOfContract() view public returns(uint){
        return USDT.balanceOf(contractAddr);
     }
 
-    // function reallyAddrUsdt() view public returns(address){
-    //    return USDT(address(this));
-    // }
-
-    function senderNTaddr()  view public returns(uint){
+    function NTbalanceOfUser()  view public returns(uint){
         return NT.balanceOf(owner);
     }
 
-    function senderUSDTaddr() view public returns(uint){
+    function USDTbalanceOfUser() view public returns(uint){
        return USDT.balanceOf(owner);
     }
-
-    // function approvel(
-    //     address owner,
-    //     address spender,
-    //     uint256 amount)
-    //      public  {
-    //     USDT.approve(owner, spender, amount);
-    // }
 
     function near(
         // address from,
