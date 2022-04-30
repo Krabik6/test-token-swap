@@ -26,11 +26,11 @@ contract Shop {
     
     // }
     function contractNTaddr()  view public returns(uint){
-        return NT.balanceOf(address(this));
+        return NT.balanceOf(contractAddr);
     }
 
-    function contractUSDTaddr(address _addr) view public returns(uint){
-       return USDT.balanceOf(_addr);
+    function contractUSDTaddr() view public returns(uint){
+       return USDT.balanceOf(contractAddr);
     }
 
     // function reallyAddrUsdt() view public returns(address){
@@ -38,22 +38,34 @@ contract Shop {
     // }
 
     function senderNTaddr()  view public returns(uint){
-        return NT.balanceOf(address(msg.sender));
+        return NT.balanceOf(owner);
     }
 
     function senderUSDTaddr() view public returns(uint){
-       return USDT.balanceOf(address(msg.sender));
+       return USDT.balanceOf(owner);
     }
 
-    function near(uint _amount) public  {
-        USDT.transfer(address(this), _amount);
-        uint tokensToBuy =  _amount;  
-        // require(tokensToBuy > 0, "not enough funds!");
-        // NT._mint(msg.sender, tokensToBuy);
-        // require(tokenBalance() >= tokensToBuy, "not enough tokens!");
-        NT.mint(msg.sender, tokensToBuy);
+    // function approvel(
+    //     address owner,
+    //     address spender,
+    //     uint256 amount)
+    //      public  {
+    //     USDT.approve(owner, spender, amount);
+    // }
 
-        // NT.transfer(msg.sender, tokensToBuy);
+    function near(
+        // address from,
+        // address to,
+        uint256 amount
+    ) public  {
+        USDT.approvel(owner, contractAddr, amount);
+        USDT.transferFrom(owner, contractAddr, amount);
+        uint tokensToBuy =  amount;  
+
+        // require(tokensToBuy > 0, "not enough funds!");
+        // require(tokenBalance() >= tokensToBuy, "not enough tokens!");
+        NT.mint(owner, tokensToBuy);
+
         // emit Bought(tokensToBuy, msg.sender);
     }
 
@@ -61,3 +73,4 @@ contract Shop {
         return NT.balanceOf(address(this));
     }
 } 
+
