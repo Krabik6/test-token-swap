@@ -14,3 +14,6 @@ node scripts/sample-script.js
 npx hardhat help
 ```
 # xxx
+
+//надо бы попробовать добавить в shop функцию минта из USDT и потестить так
+
